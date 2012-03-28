@@ -1,0 +1,27 @@
+#!/bin/bash 
+
+server=$1
+branch=$2
+
+echo "DEPLOY"
+ssh $server <<REMOTE
+cd /root/robogames
+
+# checkout
+git fetch
+git reset --hard $branch
+
+# make sure mongo is on
+# start mongodb
+
+# compile
+bin/compile
+
+# run
+cp -f bin/robogames.conf /etc/init/robogames.conf
+stop robogames
+start robogames
+
+REMOTE
+
+
