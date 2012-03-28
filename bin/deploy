@@ -14,7 +14,8 @@ git reset --hard $branch
 # make sure mongo is on
 # start mongodb
 
-# compile
+# compile and install
+npm install
 bin/compile
 
 # run
